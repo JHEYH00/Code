@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="./assets/icon/logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>About Page</title>
+</head>
+
+<body>
+
+    <main class="about">
+        <header>
+            <nav class="navigation max-width">
+                <div class="navigation__logo"></div>
+                <ul class="navigation__links">
+                    <li class="navigation__link"><a href="index.html">home</a></li>
+                    <li class="navigation__link active"><a href="about.html">about</a></li>
+                    <li class="navigation__link"><a href="gallery.html">gallery</a></li>
+                    <li class="navigation__link"><a href="blog.html">blog</a></li>
+                    <li class="navigation__link"><a href="contact.html">contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="about__content max-width">
+            <div class="about__introduction">
+                <h1>about me</h1>
+                <p>
+                    Hi, my name is Jherald Jay M. Halos 21 years old. Living at Sta. Lucia, Ilocos Sur with my parents.
+                    I'm currently studying at Ilocos Sur Polytechnic State College (ISPSC) as a Information Technology
+                    (IT) and 2nd year student.
+                    <br>
+                </p>
+                <br>
+                <h3>
+                    I like to learn new things that comes to mind like:
+                </h3>
+                <ul class="list">
+                    <li>boxing</li>
+                    <li>pen spinning</li>
+                    <li>learning new language</li>
+                    <li>sign language</li>
+                    <li>taxes</li>
+                    <li>crypto</li>
+                    <li>etc...</li>
+                </ul>
+                <br>
+                <p>
+                    I'm really passionate to learn new things that I see is interesting.
+                    <br>
+                    I'm a reserve kind of guy, don't talk much and only talk when you talk to me. Either to say that I
+                    want to be successful in th future, live in carefree life and live long.
+                </p>
+            </div>
+            <div class="about__img">
+                <img src="./assets/img/1.png" alt="">
+            </div>
+        </section>
+    </main>
+
+    <div class="page-loader active">
+        <div>
+            <img src="./assets/icon/logo.png">
+            <span class="loader"></span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Select page loader element
+            const pageLoader = document.querySelector('.page-loader');
+
+            // create a delay for transition/request
+            const request = (secs) => new Promise(resolve => setTimeout(resolve, secs));
+
+            // function for removing the pageloader
+            async function removePageLoader() {
+                await request(2000)
+                pageLoader.classList.remove('active')
+            }
+
+            // calling the function
+            removePageLoader();
+        })
+    </script>
+</body>
+
+</html>

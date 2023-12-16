@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="./assets/icon/logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Gallery Page</title>
+</head>
+
+<body>
+    <main class="gallery">
+        <header>
+            <nav class="navigation max-width">
+                <div class="navigation__logo">
+                <a href="index.html" class="navigation__logo"></a>
+                </div>
+                <ul class="navigation__links">
+                    <li class="navigation__link"><a href="index.html">home</a></li>
+                    <li class="navigation__link"><a href="about.html">about</a></li>
+                    <li class="navigation__link active"><a href="gallery.html">gallery</a></li>
+                    <li class="navigation__link"><a href="blog.html">blog</a></li>
+                    <li class="navigation__link"><a href="contact.html">contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="gallery__content">
+            <div class="gallery__slider">
+                    <img src="./assets/img/g1.png" alt="jherald photo">
+                </div>
+                <div class="gallery__slide">
+                <div class="gallery__slide">
+                    <img src="./assets/img/g2.png" alt="jherald photo">
+                </div>
+                <div class="gallery__slide">
+                    <img src="./assets/img/g3.png" alt="jherald photo">
+                </div>
+                <div class="gallery__slide">
+                    <img src="./assets/img/g4.png" alt="jherald photo">
+                </div>
+                <div class="gallery__slide">
+                    <img src="./assets/img/g5.png" alt="jherald photo">
+                </div>
+                <div class="gallery__slide">
+                    <img src="./assets/img/g6.png" alt="jherald photo">
+                </div>
+                <div class="gallery__slide">
+                    <img src="./assets/img/g7.png" alt="jherald photo">
+                </div>
+                <div class="gallery__slide">
+                    <img src="./assets/img/g8.png" alt="jherald photo">
+                </div>
+                <div class="gallery__slide">
+                    <img src="./assets/img/4.png" alt="jherald photo">
+                </div>
+
+                <button class="gallery__btn gallery__btn--left">&larr;</button>
+                <button class="gallery__btn gallery__btn--right">&rarr;</button>
+            </div>
+        </section>
+    </main>   
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // function for home page sliders
+            const slider = function () {
+                // Select all element relevant in slider
+                const slides = document.querySelectorAll('.gallery__slide');
+                const btnLeft = document.querySelector('.gallery__btn--left');
+                const btnRight = document.querySelector('.gallery__btn--right');
+
+                // start at 0 slide
+                let curSlide = 1;
+
+                // get the length of the slides img
+                const maxSlide = slides.length;
+
+
+                const goToSlide = function (slide) {
+                    slides.forEach((s, i) => {
+                        const translateX = 150 * (i - slide);
+                        const scale = translateX === 0 ? 'scale(1.5)' : '';
+                        s.style.transform = `translateX(${translateX}%) ${scale}`;
+                    });
+                };
+
+                // Next slide
+                const nextSlide = function () {
+                    if (curSlide === maxSlide - 1) {
+                        curSlide = 0;
+                    } else {
+                        curSlide++;
+                    }
+
+                    goToSlide(curSlide);
+                };
+
+                // Prev slide
+                const prevSlide = function () {
+                    if (curSlide === 0) {
+                        curSlide = maxSlide - 1;
+                    } else {
+                        curSlide--;
+                    }
+                    goToSlide(curSlide);
+                };
+
+                // intiate the function
+                const init = function () {
+                    goToSlide(curSlide);
+
+                };
+
+                init();
+
+                // Event handlers
+                // Click handlers
+                btnRight.addEventListener('click', nextSlide);
+                btnLeft.addEventListener('click', prevSlide);
+
+                // key handlers
+                document.addEventListener('keydown', function (e) {
+                    if (e.key === 'ArrowLeft') prevSlide();
+                    e.key === 'ArrowRight' && nextSlide();
+                });
+            };
+
+            // calling the function
+            slider();
+
+            // Select page loader element
+            const pageLoader = document.querySelector('.page-loader');
+
+            // create a delay for transition/request
+            const request = (secs) => new Promise(resolve => setTimeout(resolve, secs));
+
+            // function for removing the pageloader
+            async function removePageLoader() {
+                await request(2000)
+                pageLoader.classList.remove('active')
+            }
+
+            // calling the function
+            removePageLoader();
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="icon" href="./assets/icon/logo.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Home Page</title>
+</head>
+
+<body>
+    <main class="home">
+        <header>
+            <nav class="navigation max-width">
+                <div class="navigation__logo">
+                <a href="index.html" class="navigation__logo"></a>
+                </div>
+                <ul class="navigation__links">
+                    <li class="navigation__link active"><a href="index.html">home</a></li>
+                    <li class="navigation__link"><a href="about.html">about</a></li>
+                    <li class="navigation__link"><a href="gallery.html">gallery</a></li>
+                    <li class="navigation__link"><a href="blog.html">blog</a></li>
+                    <li class="navigation__link"><a href="contact.html">contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="home__content max-width">
+            <div class="content__image">
+                <div class="me__picture">
+                    <img src="./assets/img/2.png" alt="jherald photo">
+                </div>
+                <button class="slider__btn slider__left">&larr;</button>
+                <button class="slider__btn slider__right">&rarr;</button>
+            </div>
+            <div class="content__container">
+                <div class="container__text">
+                    <h3>halos</h3>
+                    <h1>jherald</h1>
+                </div>
+        </section>
+    </main>
+    
+    <div class="page-loader active">
+        <div>
+            <img src="./assets/icon/logo.png">
+            <span class="loader"></span>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Select page loader element
+            const pageLoader = document.querySelector('.page-loader');
+
+            // create a delay for transition/request
+            const request = (secs) => new Promise(resolve => setTimeout(resolve, secs));
+
+            // function for removing the pageloader
+            async function removePageLoader() {
+                await request(1000)
+                pageLoader.classList.remove('active')
+            }
+
+            // calling the function
+            removePageLoader();
+        })
+    </script>
+</body>
+
+</html>
